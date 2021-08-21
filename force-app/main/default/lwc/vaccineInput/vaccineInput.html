@@ -1,0 +1,28 @@
+<template>
+  
+    <lightning-input data-id="pinCode" required type="number"  label="PinCode"  name="pinCode" ></lightning-input>
+    <lightning-input data-id="vaccineDate" required type="date"  date-style="short" label="Date" name="vaccineDate"></lightning-input>
+    <lightning-button class="slds-button"
+    label="Submit" variant="brand" data-id="submit" onclick={get_input}></lightning-button>
+
+    <!-- <lightning-card id="main">
+
+    <!-</lightning-card> -->
+    <!-- <div id='main'>
+        {articlelement}
+    </div> --> 
+    
+    <!-- <tr for:each={jsonresponse.centers} for:item="repo">
+        <td>{repo.name}</td>
+        <td>{repo.address}</td>
+    </tr> -->
+    <lightning-datatable 
+    columns = {columns}
+    data = {listdata1}
+    key-field = "hstName"
+    hide-checkbox-column="true"
+    >
+        
+    </lightning-datatable>
+
+</template>
