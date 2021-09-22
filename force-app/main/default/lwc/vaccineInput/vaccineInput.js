@@ -34,14 +34,29 @@ export default class VaccineInput extends LightningElement {
 
     get_input(event){
        let pinCodevalue = this.template.querySelector('[data-id="pinCode"]').value;
-       let datevalue ='20-08-2021' ;
+      
+       //let datevalue ='20-08-2021' ;
        let testdate = this.template.querySelector('[data-id="vaccineDate"]').value;
-       console.log(typeof(testdate));
+       let currentDate = new Date(testdate);
+       let finaldate = currentDate.toJSON().slice(0,10);
+       let finaleedate = finaldate.slice(8,10)+'-'+finaldate.slice(5,7)+'-'+finaldate.slice(0,4);
+    //    let dd = currentDate.getDate();
+    //    let mm = currentDate.getMonth()+1;
+    //    let yyyy = currentDate.getFullYear();
+       
+    //    let formatter = new Intl.DateTimeFormat('en',{
+    //        year:'numeric',
+    //        month:'numeric',
+    //        day:'numeric'
+    //    });
+    //    let formattedDate = formatter.format(currentDate);
+       console.log(finaleedate);
+    //    console.log(typeof(testdate));
        //let formatted_date = datevalue.getDate() + "-" + (datevalue.getMonth()) + "-" + datevalue.getFullYear();
-       let vaccineUrl=  `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pinCodevalue}&date=${datevalue}`;
+       let vaccineUrl=  `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pinCodevalue}&date=${finaleedate}`;
        //console.log(formatted_date);
        console.log(pinCodevalue);
-       console.log(datevalue);
+       console.log(vaccineUrl);
        this.getVaccine(vaccineUrl);
        
     }  
@@ -66,6 +81,7 @@ export default class VaccineInput extends LightningElement {
     });
     console.log(listdata);
     this.listdata1=listdata;
+    console.log(this.listdata1.length);
     // console.log(listdata1);
 
    }
